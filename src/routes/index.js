@@ -1,4 +1,5 @@
 import express from 'express'
+import { search, searchXML, reservation }from '../containers/air/'
 
 import itinerary from './json/itinerary'
 import booking from './json/booking'
@@ -9,8 +10,17 @@ const router = express.Router()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', { page: 'Home', menuId: 'home' })
+	// res.render('index', { page: 'Home', menuId: 'home' })
+
+  res.render('prueba', { page: 'Contact Us', menuId: 'contact' })
 })
+
+router.post('/', async function(req, res, next) {
+  let result = await search(req.body) 
+
+	res.end(result)
+})
+
 
 function getResult() {
 	const { status, bookingId, product, contactData, transaction, messages } = booking
@@ -52,11 +62,38 @@ router.get('/air', function(req, res, next) {
 		messages: messages
 	}
 
-	res.render('air', { data })
+  res.render('emails/air', { data })
 })
 
 router.get('/contact', function(req, res, next) {
 	res.render('contact', { page: 'Contact Us', menuId: 'contact' })
 })
+
+router.get('/air/search', function(req, res, next) {
+  res.render('prueba', { page: 'Contact Us', menuId: 'contact' })
+})
+
+router.post('/air/search', async function(req, res, next) {
+  let result = await search(req.body) 
+
+	res.end(result)
+})
+
+router.post('/air/searchXML', async function(req, res, next) {
+  let result = await searchXML(req.body) 
+
+	res.end(result)
+})
+
+router.post('/air/reservation', async function(req, res, next) {
+  let result = await reservation(req.body) 
+
+	res.end(result)
+})
+
+// router.get('/', function(req, res, next) {
+// router.get('*', function(req, res, next) {
+// 	res.render('aleani', { query: req.params && req.params['0'], time: process.env.TIMEOUT })
+// })
 
 export default router

@@ -18,9 +18,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 async function start() {
-	const client = await MongoClient.connect(config.mongo.url, { useNewUrlParser: true })
+	// const client = await MongoClient.connect(config.mongo.url, { useNewUrlParser: true })
 	// app.client = client
-	app.db = client.db()
+	// app.db = client.db()
 
 	app.disable('x-powered-by')
 
@@ -37,6 +37,8 @@ async function start() {
 		}
 		next()
 	})
+
+  app.use('/favicon.ico', express.static(__dirname + '/favicon.ico'));
 
   app.use('/', index);
 

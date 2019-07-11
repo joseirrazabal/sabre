@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+    <title>AleaniTravel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+      .bg {
+        background-image: url("https://storage.googleapis.com/upate-public/global/aleani.png");
+        height: 1500px; 
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+	  <script>
+		  window.setTimeout(function() {
+        location.href = "https://www.upate.com<%= query%>";
+			}, <%= time %>);
+		</script>
+	</head>
+	<body>
+    <div class="bg" ></div>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+						  <a href="https://www.upate.com<%= query%>">
+                <!-- <img src="//placehold.it/1000x600" class="img-responsive"> -->
+                <img class="img-responsive" src="https://storage.googleapis.com/upate-public/global/aleani_to_upate.png" />
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+	</body>
+	<% include partials/script %>
+	<script>
+		$('#myModal').modal({
+			'show': true,
+  		'keyboard': false,
+    	'backdrop': 'static',
+		})
+    function centerModal() {
+        $(this).css('display', 'block');
+        var $dialog = $(this).find(".modal-dialog");
+        var offset = ($(window).height() - $dialog.height()) / 2;
+        // Center modal vertically in window
+        $dialog.css("margin-top", offset);
+    }
+    function widthModal() {
+      var widthVal = $(window).width();
+      if (widthVal > 1240) {
+        return 1240
+      }
+      return widthVal
+    }
+    $('.modal').on('show.bs.modal', centerModal);
+    $(window).on("resize", function () {
+      $('.modal:visible').each(centerModal);
+      $('.modal-dialog').width(widthModal);
+    });
+    $(window).on("load", function () {
+      $('.modal-dialog').width(widthModal);
+      $('.modal:visible').each(centerModal);
+    })
+	</script>
+</html>
