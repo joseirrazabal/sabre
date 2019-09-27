@@ -10,18 +10,21 @@ const config = {
 	},
 	products: process.env.PRODUCTS || '',
 	air: {
-    endpoint: { 
-      rest: 'https://api.havail.sabre.com', 
-      // xml: 'https://webservices.havail.sabre.com' 
-      // rest: 'https://api.test.sabre.com', 
-      xml: 'https://sws-crt.cert.havail.sabre.com' 
-    },
-		userId: '',
-		group: '',
-		domain: '',
-		clientSecret: '',
+		endpoint: {
+      rest: process.env.SABRE_ENV === 'production' 
+        ? 'https://api.havail.sabre.com' 
+        : 'https://api.test.sabre.com',
+			xml:
+				process.env.SABRE_ENV === 'production'
+					? 'https://webservices.havail.sabre.com'
+					: 'https://sws-crt.cert.havail.sabre.com'
+		},
+		userId: process.env.SABRE_USER,
+		clientSecret: process.env.SABRE_SECRET,
+		group: process.env.SABRE_GROUP,
+		domain: process.env.SABRE_DOMAIN,
 		formatVersion: 'V1',
-		timeout: 25000
+		timeout: process.env.TIMEOUT
 	}
 }
 

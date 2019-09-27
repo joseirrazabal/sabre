@@ -20,7 +20,6 @@ function catchError(err) {
 
 module.exports = {
   get : function(request) {
-    console.log(request)
     return Axios.get(`${request.directUrl || request.service}`, { params: request.query })
       .then(res => {
         return res.data

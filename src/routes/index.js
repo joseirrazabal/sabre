@@ -1,5 +1,5 @@
 import express from 'express'
-import { search, searchXML, reservation }from '../containers/air/'
+import { search, reservation }from '../containers/air/'
 
 import itinerary from './json/itinerary'
 import booking from './json/booking'
@@ -75,12 +75,6 @@ router.get('/air/search', function(req, res, next) {
 
 router.post('/air/search', async function(req, res, next) {
   let result = await search(req.body) 
-
-	res.end(result)
-})
-
-router.post('/air/searchXML', async function(req, res, next) {
-  let result = await searchXML(req.body) 
 
 	res.end(result)
 })
