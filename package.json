@@ -76,7 +76,7 @@
 		"passport-google-oauth20": "^2.0.0",
 		"passport-twitter": "^1.0.4",
 		"promise-mysql": "github:lukeb-uk/node-promise-mysql",
-		"validator": "^10.8.0",
+		"validator": "^13.7.0",
 		"yup": "^0.27.0"
 	},
 	"engines": {
