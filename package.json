@@ -47,7 +47,7 @@
 		"cors": "^2.8.4",
 		"dotenv": "^7.0.0",
 		"ejs": "^2.6.1",
-		"express": "^4.16.3",
+		"express": "^4.17.3",
 		"express-session": "^1.16.1",
 		"generate-password": "^1.4.1",
 		"glob": "^7.1.3",
